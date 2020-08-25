@@ -23,9 +23,9 @@ public class DepartmentController {
 		this.departmentService = departmentService;
 	}
 	@GetMapping("/departments/{departmentId}")
-	public Object getDepartmentById(@PathVariable("departmentId") Integer departmentId)
+	public ResponseEntity<Optional<Department>> getDepartmentById(@PathVariable("departmentId") Integer departmentId)
 	{
-		return departmentService.getDepartmentById(departmentId);
+		return new ResponseEntity<Optional<Department>>(departmentService.getDepartmentById(departmentId),HttpStatus.OK);
 	}
 	@GetMapping("/departments")
 	public ResponseEntity<Iterable<Department>> getAllDepartment()
